@@ -37,3 +37,25 @@ locations[ 0 ] = [ 0, 0 ];
 locations[ 1 ] = [ 0, 1 ];
 locations[ 2 ] = [ 1, 1 ];
 locations[ 3 ] = [ 1, 2 ];
+
+class Pair
+{
+    int x, y;
+}
+
+class Shape
+{
+    Pair anchor;
+    Set<Pair> block_locations;
+    // int angle;
+
+    void rotate()
+    {
+        angle = ( angle + 1 ) % 4;
+    }
+
+    void rotate()
+    {
+        modify the block_locations;
+    }
+}
