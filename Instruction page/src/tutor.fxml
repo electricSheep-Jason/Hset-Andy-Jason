@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tutor">
+   <children>
+      <Button layoutX="67.0" layoutY="64.0" mnemonicParsing="false" text="Back" />
+      <TextArea layoutX="78.0" layoutY="119.0" prefHeight="234.0" prefWidth="410.0" text="left/right button:  to move blocks, &#10;&#10;                             pressing on button increases speed of movement&#10;&#10;up button:            rotate block&#10;&#10;spacebar:              fall all the way down" />
+   </children>
+</AnchorPane>

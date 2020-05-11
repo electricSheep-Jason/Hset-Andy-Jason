@@ -1,0 +1,1 @@
+Inside the file scr there's a tutor.fxml file. That is the tutor page.
