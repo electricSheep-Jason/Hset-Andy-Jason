@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HighestScoresPageController">
+   <children>
+      <TableView fx:id="TableHighestScores" layoutX="125.0" layoutY="119.0" prefHeight="363.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="ColumnPlayer" prefWidth="100.0" text="Players" />
+          <TableColumn fx:id="ColumnScore" prefWidth="99.0" text="Scores" />
+        </columns>
+      </TableView>
+      <Button layoutX="345.0" layoutY="497.0" mnemonicParsing="false" onAction="#BackToMenu" text="Back to Menu" />
+   </children>
+</AnchorPane>
