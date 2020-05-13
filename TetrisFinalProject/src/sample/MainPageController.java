@@ -60,3 +60,4 @@ public class MainPageController extends Application implements Initializable {
         launch(args);
     }
 }
+

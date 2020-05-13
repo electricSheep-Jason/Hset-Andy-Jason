@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="holder" onKeyPressed="#moveOnKeyPress" onMouseClicked="#ABC" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tetris">
+<AnchorPane fx:id="holder" onKeyPressed="#moveOnKeyPress" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tetris">
    <children>
       <Line endY="-203.0" layoutX="300.0" layoutY="203.0" startY="397.0" />
-      <Text layoutX="350.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: " />
+      <Text fx:id="Score" layoutX="350.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: " />
+      <Button layoutX="342.0" layoutY="189.0" mnemonicParsing="false" onAction="#Start" text="Start" />
+      <Button layoutX="342.0" layoutY="230.0" mnemonicParsing="false" onAction="#Pause" text="Pause" />
+      <Button fx:id="ButtonBack" layoutX="321.0" layoutY="442.0" mnemonicParsing="false" onAction="#BackToMenu" text="Back to Menu" />
+      <Text fx:id="Level" layoutX="350.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level: " />
    </children>
 </AnchorPane>

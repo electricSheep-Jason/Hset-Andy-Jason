@@ -30,7 +30,7 @@ public class HighestScoresPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         data = FXCollections.observableArrayList();
-        LoadDataFromDatabase loader = new LoadDataFromDatabase();
+        InsertAndLoad loader = new InsertAndLoad();
         loader.LoadRecords(data);
         ColumnPlayer.setCellValueFactory(new PropertyValueFactory<>("PlayerName"));
         ColumnScore.setCellValueFactory(new PropertyValueFactory<>("PlayerScore"));
