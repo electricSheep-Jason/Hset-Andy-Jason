@@ -21,8 +21,7 @@ import java.util.ResourceBundle;
 public class HighestScoresPageController implements Initializable {
     @FXML
     TableView TableHighestScores;
-    @FXML
-    TableColumn<HighestScoreRecords, String> ColumnPlayer;
+
     @FXML
     TableColumn<HighestScoreRecords, Integer> ColumnScore;
     private ObservableList<HighestScoreRecords> data;
@@ -32,7 +31,6 @@ public class HighestScoresPageController implements Initializable {
         data = FXCollections.observableArrayList();
         InsertAndLoad loader = new InsertAndLoad();
         loader.LoadRecords(data);
-        ColumnPlayer.setCellValueFactory(new PropertyValueFactory<>("PlayerName"));
         ColumnScore.setCellValueFactory(new PropertyValueFactory<>("PlayerScore"));
         TableHighestScores.setItems(data);
 

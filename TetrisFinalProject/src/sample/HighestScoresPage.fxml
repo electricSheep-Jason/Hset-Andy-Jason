@@ -7,8 +7,7 @@
    <children>
       <TableView fx:id="TableHighestScores" layoutX="125.0" layoutY="119.0" prefHeight="363.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="ColumnPlayer" prefWidth="100.0" text="Players" />
-          <TableColumn fx:id="ColumnScore" prefWidth="99.0" text="Scores" />
+          <TableColumn fx:id="ColumnScore" prefWidth="199.0" text="Scores" />
         </columns>
       </TableView>
       <Button layoutX="345.0" layoutY="497.0" mnemonicParsing="false" onAction="#BackToMenu" text="Back to Menu" />

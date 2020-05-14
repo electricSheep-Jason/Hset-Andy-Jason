@@ -4,6 +4,8 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -484,7 +486,7 @@ public class Tetris extends Application implements Initializable {
 
                 for (Node node : NewRectangles) {
                     Rectangle a = (Rectangle) node;
-                    if (a.getY()/size < Rows.get(0)) {
+                    if (a.getY() / size < Rows.get(0)) {
                         placeholder[(int) a.getX() / size][(int) a.getY() / size] = 0;
                         a.setY(a.getY() + size);
                     }
@@ -595,9 +597,19 @@ public class Tetris extends Application implements Initializable {
 
     @FXML
     public void BackToMenu(ActionEvent actionEvent) throws IOException {
-        for(int[] k: placeholder){
-            Arrays.fill(k,0);
+        for (int[] k : placeholder) {
+            Arrays.fill(k, 0);
         }
+        InsertAndLoad app = new InsertAndLoad();
+        ObservableList<HighestScoreRecords> data = FXCollections.observableArrayList();
+        app.LoadRecords(data);
+        if (data.size() > 0) {
+            app.DeleteRecords(data);
+        }
+        HighestScoreRecords newrecord = new HighestScoreRecords(score);
+        data.add(newrecord);
+        data = app.SortList(data);
+        app.InsertRecords(data);
         holder.getChildren().removeIf(node -> node instanceof Rectangle);
         Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         Scene scene = new Scene(root);

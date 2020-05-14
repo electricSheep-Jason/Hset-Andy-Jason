@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 
 import java.sql.*;
 
@@ -17,17 +18,42 @@ public class InsertAndLoad {
         return conn;
     }
 
-    public void InsertRecords(String name, int score) {
-        String sql = "INSERT INTO HighestScores(Players, Scores) VALUES(?,?)";
+    public void InsertRecords(ObservableList<HighestScoreRecords> data) {
+        String sql = "INSERT INTO HighestScores(Scores) VALUES(?)";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setInt(2, score);
-            pstmt.executeUpdate();
+            int i=0;
+            for(HighestScoreRecords record:data){
+                pstmt.setInt(1, record.getPlayerScore());
+                pstmt.addBatch();
+                i++;
+                if(i==data.size()){
+                    pstmt.executeBatch();
+                }
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
+
+    public void DeleteRecords(ObservableList<HighestScoreRecords> data) {
+        String sql = "DELETE FROM HighestScores WHERE Scores = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            int i=0;
+            for(HighestScoreRecords record:data){
+                pstmt.setInt(1, record.getPlayerScore());
+                pstmt.addBatch();
+                i++;
+                if(i==data.size()){
+                    pstmt.executeBatch();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
     public void LoadRecords(ObservableList<HighestScoreRecords> data) {
         String sql = "SELECT * FROM HighestScores";
@@ -37,7 +63,7 @@ public class InsertAndLoad {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                HighestScoreRecords record = new HighestScoreRecords(rs.getString(1), rs.getInt(2));
+                HighestScoreRecords record = new HighestScoreRecords(rs.getInt(1));
                 data.add(record);
             }
         } catch (SQLException e) {
@@ -45,13 +71,33 @@ public class InsertAndLoad {
         }
     }
 
-    public void InsertHelper(String name, int score) {
-        ObservableList<HighestScoreRecords> data = null;
-        LoadRecords(data);
-        for(int i=0;i<data.size();i++){
-            if(score<data.get(i).getPlayerScore()){
-                
+    public ObservableList<HighestScoreRecords> SortList(ObservableList<HighestScoreRecords> data) {
+        for (int i = 0; i < data.size(); i++) {
+            int position = i;
+            int Highest = data.get(i).getPlayerScore();
+            for (int j = i + 1; j < data.size(); j++) {
+                if (data.get(j).getPlayerScore()>Highest) {
+                    Highest = data.get(j).getPlayerScore();
+                    position = j;
+                }
             }
+            Object k = data.get(i);
+            data.set(i,data.get(position));
+            data.set(position, (HighestScoreRecords) k);
         }
+        return data;
+    }
+
+    public static void main(String[] args) {
+        InsertAndLoad app = new InsertAndLoad();
+        ObservableList<HighestScoreRecords> data = FXCollections.observableArrayList();
+        app.LoadRecords(data);
+        app.DeleteRecords(data);
+        HighestScoreRecords newrecord =new HighestScoreRecords(8);
+        HighestScoreRecords newrecord1 =new HighestScoreRecords(11);
+        data.add(newrecord);
+        data.add(newrecord1);
+        data=app.SortList(data);
+        app.InsertRecords(data);
     }
 }
