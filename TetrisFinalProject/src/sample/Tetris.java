@@ -117,8 +117,8 @@ public class Tetris extends Application implements Initializable {
             placeholder[(int) (form.b.getX() / size)][(int) (form.b.getY() / size)] = 1;
             placeholder[(int) (form.c.getX() / size)][(int) (form.c.getY() / size)] = 1;
             placeholder[(int) (form.d.getX() / size)][(int) (form.d.getY() / size)] = 1;
-            RemoveRows(holder);
             a = Controller.MakeForm();
+            RemoveRows(holder);
             if (a == null) {
                 GameOver();
             } else {
@@ -505,6 +505,7 @@ public class Tetris extends Application implements Initializable {
                 RowsRemoved += 1;
                 if (RowsRemoved == 2) {
                     LevelUp();
+                    RowsRemoved = 0;
                 }
             }
         }
@@ -594,7 +595,9 @@ public class Tetris extends Application implements Initializable {
 
     @FXML
     public void BackToMenu(ActionEvent actionEvent) throws IOException {
-        placeholder = new int[X_max / size][Y_max / size];
+        for(int[] k: placeholder){
+            Arrays.fill(k,0);
+        }
         holder.getChildren().removeIf(node -> node instanceof Rectangle);
         Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         Scene scene = new Scene(root);
