@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InstructionsPageController">
    <children>
-      <TextArea fx:id="Instructions" layoutX="153.0" layoutY="60.0" prefHeight="280.0" prefWidth="295.0" />
+      <TextArea fx:id="Instructions" editable="false" layoutX="153.0" layoutY="60.0" prefHeight="280.0" prefWidth="295.0" />
+      <Button layoutX="478.0" layoutY="340.0" mnemonicParsing="false" onAction="#BackToMenu" text="Back to Menu" />
    </children>
 </AnchorPane>
