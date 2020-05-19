@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//shows the main page (first page you see when you run the app)
+
 public class MainPageController extends Application implements Initializable {
     @Override
     public void start(Stage stage) throws Exception {

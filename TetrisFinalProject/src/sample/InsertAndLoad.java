@@ -5,6 +5,9 @@ import javafx.collections.FXCollections;
 
 import java.sql.*;
 
+//insert new score into database
+//load the score from database
+
 public class InsertAndLoad {
     public Connection connect() {
         // SQLite connection string

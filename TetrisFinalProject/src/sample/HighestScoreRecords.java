@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+//showing scores on the table
+
 public class HighestScoreRecords {
     private IntegerProperty PlayerScore;
 
@@ -20,7 +22,6 @@ public class HighestScoreRecords {
         PlayerScore.set(score);
     }
 
-    public IntegerProperty PlayerScoreProperty() {
-        return PlayerScore;
+    public IntegerProperty PlayerScoreProperty() { return PlayerScore;
     }
 }

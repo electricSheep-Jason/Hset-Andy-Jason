@@ -3,6 +3,8 @@ package sample;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
+//create the Tetris blocks
+
 public class Form {
     public Rectangle a;
     public Rectangle b;

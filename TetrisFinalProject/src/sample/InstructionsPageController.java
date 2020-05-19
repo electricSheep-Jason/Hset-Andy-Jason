@@ -23,7 +23,8 @@ public class InstructionsPageController implements Initializable {
         Instructions.setText("Left arrow key: move block to the left\n" + "\n" +
                 "Right arrow key: move block to the right\n" + "\n" +
                 "Down arrow key: move block down\n" + "\n" +
-                "Up arrow key: rotate block clockwise");
+                "Up arrow key: rotate block clockwise\n" + "\n" +
+                "Enter key: move block down instantly");
     }
 
     @FXML
